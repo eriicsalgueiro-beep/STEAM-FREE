@@ -3,207 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixaroid Games - Oficial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <title>STEAM FREE | Descargas Directas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- ESTILO GENERAL --- */
+        :root {
+            --accent: #ffc107;
+            --bg-dark: #0b0e14;
+            --bg-card: #1a1f26;
+            --text-main: #e9ecef;
+        }
+
         body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #000; 
-            /* Fondo de Minecraft con desenfoque */
-            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://i.imgur.com/8Qh4FkQ.jpeg'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            display: flex;
-            min-height: 100vh;
         }
 
-        /* --- BARRA LATERAL --- */
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 240px;
-            height: 100%;
-            background-color: rgba(10, 10, 10, 0.95);
-            padding: 20px;
-            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
-            z-index: 100;
-        }
-
-        /* LOGO PIXELADO ESTILO MINECRAFT */
-        .logo {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 14px; /* Las fuentes pixeladas se ven mejor chicas */
-            line-height: 1.5;
-            color: #55FF55; /* Verde Minecraft clásico */
-            margin-bottom: 50px;
-            text-align: center;
-            text-shadow: 3px 3px #003300;
-        }
-
-        .menu-item {
-            display: block;
-            padding: 12px 15px;
-            color: #aaa;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 8px;
-            font-size: 14px;
-            transition: 0.3s;
-            border-left: 3px solid transparent;
-        }
-
-        .menu-item:hover, .menu-item.active {
-            background-color: rgba(0, 255, 136, 0.1);
-            color: #fff;
-            border-left: 3px solid #00ff88;
-        }
-
-        /* --- CONTENIDO PRINCIPAL --- */
-        .main-content {
-            margin-left: 280px; 
-            margin-top: 40px;
-            width: 70%;
-            max-width: 900px;
-        }
-
-        .glass-box {
-            background-color: rgba(20, 20, 20, 0.8);
-            backdrop-filter: blur(12px);
-            border-radius: 12px;
-            padding: 40px;
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        }
-
-        h2 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 16px;
-            color: #00ff88;
-            margin-bottom: 25px;
-        }
-
-        /* LISTA DE JUEGOS */
-        .game-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .game-item {
-            background: rgba(255,255,255,0.03);
-            margin-bottom: 12px;
-            padding: 18px;
-            border-radius: 8px;
+        /* Navbar Estilo Gamer */
+        nav {
+            background: rgba(26, 31, 38, 0.95);
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 2px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .search-bar {
+            background: #252c35;
+            border: 1px solid #3d4450;
+            padding: 8px 15px;
+            border-radius: 5px;
+            color: white;
+            width: 300px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(to bottom, rgba(255, 193, 7, 0.1), var(--bg-dark));
+        }
+
+        .hero img { width: 120px; margin-bottom: 1rem; }
+
+        /* Catalogo de Juegos */
+        .catalog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .grid-games {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .game-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid #2d353f;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 15px;
         }
 
         .game-title {
-            font-weight: 600;
-            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 8px;
             display: block;
         }
-        
-        .game-info {
-            font-size: 0.85em;
-            color: #777;
-        }
 
-        .tag-rip {
-            background: #ff4444;
-            color: white;
-            font-size: 10px;
-            padding: 2px 6px;
+        .tag {
+            font-size: 0.75rem;
+            background: #343a40;
+            padding: 3px 8px;
             border-radius: 4px;
-            margin-left: 10px;
-            vertical-align: middle;
+            color: var(--accent);
         }
 
-        /* BOTONES */
-        .download-section {
-            margin-top: 40px;
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 15px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
+        .btn-download {
+            display: block;
             text-align: center;
-            flex: 1;
-            transition: all 0.3s;
-            color: white;
-            border: none;
-            cursor: pointer;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
         }
 
-        .btn:hover { filter: brightness(1.2); transform: translateY(-2px); }
-        .btn-primary { background: #007bff; }
-        .btn-secondary { background: #28a745; }
-
-        /* RESPONSIVE */
-        @media (max-width: 900px) {
-            .sidebar { width: 60px; padding: 10px; }
-            .logo, .menu-item span { display: none; }
-            .main-content { margin-left: 80px; width: 85%; }
-        }
     </style>
 </head>
 <body>
 
-    <div class="sidebar">
-        <div class="logo">
-            PIXAROID<br>GAMES
-        </div>
-        
-        <a href="#" class="menu-item active">Inicio</a>
-        <a href="#" class="menu-item">Juegos Optimizados</a>
-        
-        <a href="https://www.youtube.com/" target="_blank" class="menu-item">
-            Schedule 1 📺
+    <nav>
+        <a href="#" class="nav-logo">
+            <img src="icone-steam-jaune.png" alt="Logo" width="40"> STEAM FREE
         </a>
-        
-        <a href="#" class="menu-item">Programas</a>
-        <a href="#" class="menu-item">Discord</a>
+        <input type="text" class="search-bar" placeholder="Buscar juego...">
+    </nav>
+
+    <div class="hero">
+        <img src="icone-steam-jaune.png" alt="Logo">
+        <h1>Tu Biblioteca de Juegos Gratuita</h1>
+        <p>Versiones completas, sin publicidad engañosa y actualizadas.</p>
     </div>
 
-    <div class="main-content">
-        <div class="glass-box">
-            <h2>PROYECTOS DESTACADOS</h2>
-            
-            <div class="game-list">
-                <div class="game-item">
-                    <div>
-                        <span class="game-title">Grand Theft Auto V <span class="tag-rip">RIP V1.4</span></span>
-                        <span class="game-info">Optimizado para 12GB | Full Español</span>
-                    </div>
-                </div>
-
-                <div class="game-item">
-                    <div>
-                        <span class="game-title">Minecraft OptiPack</span>
-                        <span class="game-info">Incluye Shaders para bajos recursos</span>
-                    </div>
+    <div class="catalog-container">
+        <h2 style="border-left: 4px solid var(--accent); padding-left: 15px; margin-bottom: 2rem;">Lanzamientos Recientes</h2>
+        
+        <div class="grid-games">
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=400" alt="Game">
+                <div class="game-info">
+                    <span class="game-title">Cyberpunk Future</span>
+                    <span class="tag">Acción / RPG</span>
+                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Descargar</a>
                 </div>
             </div>
 
-            <h2>DESCARGAS DISPONIBLES</h2>
-            <div class="download-section">
-                <a href="#" class="btn btn-secondary">DESCARGAR (MediaFire)</a>
-                <a href="#" class="btn btn-primary">DESCARGAR (GoFile)</a>
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&q=80&w=400" alt="Game">
+                <div class="game-info">
+                    <span class="game-title">Space Odyssey</span>
+                    <span class="tag">Aventura / Indie</span>
+                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Descargar</a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=400" alt="Game">
+                <div class="game-info">
+                    <span class="game-title">Retro Combat</span>
+                    <span class="tag">Shooter</span>
+                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Descargar</a>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=400" alt="Game">
+                <div class="game-info">
+                    <span class="game-title">Dark Souls Clone</span>
+                    <span class="tag">Souls-like</span>
+                    <a href="#" class="btn-download"><i class="fas fa-download"></i> Descargar</a>
+                </div>
             </div>
         </div>
     </div>
+
+    <footer style="text-align: center; padding: 4rem; opacity: 0.5;">
+        <p>STEAM FREE © 2024 - Subiendo los mejores juegos diariamente</p>
+    </footer>
 
 </body>
 </html>
